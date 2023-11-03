@@ -8,6 +8,7 @@ import plotly.graph_objects as go
 import time as sleep_time
 from datetime import time, datetime
 
+
 st.title('The Happy Tree Sensor')
 
 import streamlit as st
@@ -67,10 +68,24 @@ chart_data = pd.DataFrame(
 st.line_chart(chart_data)
 
 
-## Step 5 Building a Select Box
+### Create a sidebar
 
-st.header("st.selectbox")
-option = st.selectbox(
+with st.sidebar:
+     st.markdown('The Happy Tree Team')
+     ## Step 5 Building a Select Box
+     
+     st.header("st.selectbox")
+     option = st.selectbox(
      'What kinds of data do you want to check?', ('Moisture','Temperature','Humidity','Pressure', 'Swap')
 )
 st.write('The Data you want to check is', option)
+
+
+### Build a Amsterdam Map
+map_data = pd.DataFrame(
+    np.random.randn(100, 2) / [50, 50] + [52.373435, 4.915012],
+    columns=['lat', 'lon'])
+st.map(map_data)
+
+st.map(data=map_data, latitude=52.373435, longitude=4.915012, color=None, size=None, zoom=0.00001, use_container_width=True)
+
